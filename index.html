@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>EA7KWF – WSPR Live</title>
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+header {
+  padding: 10px;
+  text-align: center;
+  background: #111;
+}
+iframe {
+  width: 100%;
+  height: 92vh;
+  border: none;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>EA7KWF – WSPR en tiempo real</h1>
+  <p>Salas, Asturias · UTC <span id="utc"></span></p>
+</header>
+
+<iframe src="https://wspr.live/gui/d-solo/BpzJBzRVk/live-world-view?orgId=1&timezone=utc&var-band=7&var-mindist=1000&var-rotate=Yes&var-intensity=30&refresh=1m&panelId=2"></iframe>
+
+<script>
+function updateUTC() {
+  document.getElementById("utc").innerText =
+    new Date().toUTCString().slice(17, 25);
+}
+setInterval(updateUTC, 1000);
+updateUTC();
+</script>
+
+</body>
+</html>
