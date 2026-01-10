@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>EA7KWF </title>
+<title>EA7KWF – Estación de Radio HF y WSPR</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -22,22 +22,14 @@ header {
   z-index: 1;
 }
 
-/* LOGO ANIMADO */
+/* LOGO ANIMACIÓN SUAVE */
 @keyframes logoFadeZoom {
   from { opacity: 0; transform: scale(0.85); }
   to { opacity: 1; transform: scale(1); }
 }
 
-@keyframes pulseRF {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-  100% { transform: scale(1); }
-}
-
 .logo {
-  animation:
-    logoFadeZoom 1.5s ease-out,
-    pulseRF 5s ease-in-out infinite 2s;
+  animation: logoFadeZoom 1.5s ease-out;
 }
 
 /* CONTENEDOR CENTRAL */
@@ -51,12 +43,27 @@ header {
 
 /* SECCIONES */
 section {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 h2 {
   border-bottom: 2px solid #444;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
+}
+
+/* SECCIÓN MI ESTACIÓN */
+#mi-estacion {
+  text-align: left;
+}
+
+#mi-estacion h2 {
+  font-size: 28px;
+}
+
+#mi-estacion ul {
+  font-size: 20px;
+  line-height: 1.6;
+  padding-left: 20px;
 }
 
 /* IFRAME WSPR */
@@ -74,6 +81,12 @@ iframe {
 /* CENTRADO */
 .center {
   text-align: center;
+}
+
+/* TIKTOK */
+.tiktok-embed {
+  margin: 0 auto;
+  display: block;
 }
 
 /* EFECTO SCANLINE SDR */
@@ -133,18 +146,10 @@ iframe {
     </p>
 
     <p>
-      Soy de <strong>nacionalidad argentina</strong> y actualmente resido en <strong>España</strong> en el Consejo de Salas.
+      Soy de <strong>nacionalidad argentina</strong> y actualmente resido en <strong>España</strong>.
     </p>
   </section>
 
-
-<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@desdeasturias/video/7335135286826896673" data-video-id="7335135286826896673" style="max-width: 605px;min-width: 325px;" >
-  <section> 
-    <a target="_blank" title="@desdeasturias" href="https://www.tiktok.com/@desdeasturias">@desdeasturias</a>
-    <p>Video de TikTok</p>
-  </section>
-</blockquote>
-<script async src="https://www.tiktok.com/embed.js"></script>
   <section id="mi-estacion">
     <h2>Mi estación de radio</h2>
     <ul>
@@ -156,7 +161,25 @@ iframe {
       <li><strong>Antena End-Fed</strong> para 20 y 40 metros</li>
     </ul>
   </section>
+
+  <section id="videos">
+    <h2>Video</h2>
+
+    <blockquote class="tiktok-embed"
+      cite="https://www.tiktok.com/@desdeasturias/video/7335135286826896673"
+      data-video-id="7335135286826896673"
+      style="max-width:420px; min-width:280px;">
+      <section>
+        <a target="_blank" title="@desdeasturias"
+           href="https://www.tiktok.com/@desdeasturias">@desdeasturias</a>
+      </section>
+    </blockquote>
+
+  </section>
+
 </div>
+
+<script async src="https://www.tiktok.com/embed.js"></script>
 
 <iframe
   src="https://wspr.live/gui/d/BpzJBzRVk/live-world-view?orgId=1&from=now-40m&to=now&timezone=utc&var-band=21&var-mindist=1000&var-rotate=Yes&var-intensity=10&refresh=1m">
