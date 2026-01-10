@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>EA7KWF – WSPR Live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 body {
   margin: 0;
@@ -10,110 +12,152 @@ body {
   color: white;
   font-family: Arial, sans-serif;
 }
+
+/* CABECERA */
 header {
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   background: #111;
+  position: relative;
+  z-index: 1;
 }
+
+/* LOGO ANIMADO */
+@keyframes logoFadeZoom {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseRF {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.logo {
+  animation:
+    logoFadeZoom 1.5s ease-out,
+    pulseRF 5s ease-in-out infinite 2s;
+}
+
+/* CONTENEDOR CENTRAL */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* SECCIONES */
+section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  border-bottom: 2px solid #444;
+  padding-bottom: 5px;
+}
+
+/* IFRAME WSPR */
 iframe {
   width: 100%;
-  height: 92vh;
+  height: 1300px;
   border: none;
+  border-radius: 12px;
+  display: block;
+  margin: 40px auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* CENTRADO */
+.center {
+  text-align: center;
+}
+
+/* EFECTO SCANLINE SDR */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: scanMove 10s linear infinite;
+  z-index: 999;
+}
+
+@keyframes scanMove {
+  from { background-position: 0 0; }
+  to { background-position: 0 100%; }
 }
 </style>
 </head>
+
 <body>
 
+<!-- CAPA SCANLINES -->
+<div class="scanlines"></div>
+
 <header>
-  <img src="logo_ea7kwf.png" alt="EA7KWF" style="max-width:600px; width:90%; margin-bottom:10px;">
+  <img src="logo_ea7kwf.png"
+       alt="EA7KWF"
+       class="logo"
+       style="max-width:600px; width:90%; margin-bottom:10px;">
   <p>Estación de radio · Salas, Asturias · WSPR / HF</p>
 </header>
-<div class="section">
- <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>EA7KWF - Juan Manuel</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; max-width: 900px; }
-    header { text-align: center; margin-bottom: 30px; }
-    h1 { margin: 0; }
-    section { margin-bottom: 40px; }
-  </style>
-</head>
-<body>
 
-<header>
-  <h1>EA7KWF</h1>
-  <p>Estación de radio · Salas, Asturias · Experimento, HF y SDR</p>
-</header>
+<div class="container">
 
-<section id="sobre-mi">
-  <h2>Sobre mí</h2>
-  <p>Mi nombre es <strong>Juan Manuel</strong> y soy <strong>radioaficionado desde el año 2024</strong>.</p>
-  <p>Me considero un <strong>entusiasta del mundo maker</strong>, <strong>autodidacta</strong> y apasionado
-     por la radio y la electrónica. Mis inicios en la radio se remontan a mi adolescencia,
-     cuando operaba en la banda de 11 metros.</p>
-  <p>Tras un largo periodo alejado de la radio, en el año <strong>2024</strong> decidí retomar
-     esta afición y obtener oficialmente mi <strong>licencia de radioaficionado</strong>.
-     Desde entonces he vuelto con más ganas que nunca.</p>
-  <p>Soy de <strong>nacionalidad Argentina</strong> y actualmente resido en <strong>España</strong>.</p>
-</section>
+  <section id="sobre-mi">
+    <h2>Sobre mí</h2>
+    <p>Mi nombre es <strong>Juan Manuel</strong> y soy <strong>radioaficionado desde el año 2024</strong>.</p>
 
-<section id="mi-estacion">
-  <h2>Mi estación de radio</h2>
-  <ul>
-    <li>SDR <strong>Hermes Lite</strong></li>
-    <li><strong>Amplificador Micro PA 100</strong></li>
-    <li>Transceptor <strong>President Lincoln II</strong></li>
-    <li><strong>Amplificador RM Italy</strong></li>
-    <li><strong>Antena directiva de 4 elementos</strong> para 10 metros</li>
-    <li><strong>Antena End-Fed</strong> para 20 y 40 metros</li>
-  </ul>
-</section>
+    <p>
+      Me considero un <strong>entusiasta del mundo maker</strong>, <strong>autodidacta</strong> y apasionado
+      por la radio y la electrónica. Mis inicios en la radio se remontan a mi adolescencia,
+      cuando operaba en la banda de 11 metros.
+    </p>
 
-</body>
-</html>
+    <p>
+      Tras un largo periodo alejado de la radio, en el año <strong>2024</strong> decidí retomar
+      esta afición y obtener oficialmente mi <strong>licencia de radioaficionado</strong>.
+    </p>
+
+    <p>
+      Soy de <strong>nacionalidad argentina</strong> y actualmente resido en <strong>España</strong>.
+    </p>
+  </section>
+
+  <section id="mi-estacion">
+    <h2>Mi estación de radio</h2>
+    <ul>
+      <li>SDR <strong>Hermes Lite</strong></li>
+      <li><strong>Amplificador Micro PA 100</strong></li>
+      <li>Transceptor <strong>President Lincoln II</strong></li>
+      <li><strong>Amplificador RM Italy</strong></li>
+      <li><strong>Antena directiva de 4 elementos</strong> para 10 metros</li>
+      <li><strong>Antena End-Fed</strong> para 20 y 40 metros</li>
+    </ul>
+  </section>
 
 </div>
-<iframe id="wspr"
- src="https://wspr.live/gui/d/BpzJBzRVk/live-world-view?orgId=1&from=now-40m&to=now&timezone=utc&var-band=21&var-mindist=1000&var-rotate=Yes&var
-  -intensity=10&var-txloc=&var-rxloc=&refresh=1m"
-  style=
-  " width: 100%;
-  height: 1300px;
-  max-width: 1400px;
-  display: block; 
-  margin: auto; 
-  border-radius: 12px;
-  ">
+
+<iframe
+  src="https://wspr.live/gui/d/BpzJBzRVk/live-world-view?orgId=1&from=now-40m&to=now&timezone=utc&var-band=21&var-mindist=1000&var-rotate=Yes&var-intensity=10&refresh=1m">
 </iframe>
 
-
-
-
-
-
-
-
-
-
-
-  
-  <div style="text-align:center; margin-top:20px;">
-    <img src="cq.png" alt="CQ" style="max-width:300px; width:80%;">
-  </div>
+<div class="center">
+  <img src="cq.png" alt="CQ" style="max-width:300px; width:80%; margin:20px auto;">
 </div>
-
-<script>
-function updateUTC() {
-  document.getElementById("utc").innerText =
-    new Date().toUTCString().slice(17, 25);
-}
-setInterval(updateUTC, 1000);
-updateUTC();
-</script>
 
 </body>
 </html>
